@@ -1,0 +1,43 @@
+int sub_1400010c0(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    r9 = arg3;
+    r8 = arg2;
+    rsp = rsp - 0x58;
+    
+
+
+    *(arg8 + 0x20) = 0x3030303030303030;
+    *(arg8 + 0x28) = 0x7320657365685430;
+    *(arg8 + 0x30) = 0x7361622d6b636174;
+    *(arg8 + 0x38) = 0x726f6d656d206465;
+    '000000000These stack-based memor'
+
+    *(int32_t *)(r9 + 0x20) = 0x61632079207365762065726175746361796c6c616c6163202064656c20656874;
+    'y caves are actually called the '
+
+    *(int16_t *)(r8 + 0x20) = 0x732761686f642077707363612765203a43417b4961663062;
+    "'shadow space': ACI{fab0"
+
+    *(int16_t *)(arg1 + 0x20) = 0x36376261326165316335653930336339;
+    '76aba21e5c9e309c'
+
+
+    *(int8_t *)(arg0 + 0x20) = 0x63;
+    *(int8_t *)(arg0 + 0x21) = 0x63;
+    *(int8_t *)(arg0 + 0x22) = 0x63;
+    *(int8_t *)(arg0 + 0x23) = 0x61;
+    *(int8_t *)(arg0 + 0x24) = 0x35;
+    *(int8_t *)(arg0 + 0x25) = 0x63;
+    *(int8_t *)(arg0 + 0x26) = 0x34;
+    *(int8_t *)(arg0 + 0x27) = 0x7d;
+    'ccca5c4}'
+
+
+    
+    if (*(int32_t *)dword_140004620 != 0x0) {
+            rsp = rsp + 0x4;
+    }
+    rax = sub_140001060("Don't ", 0x7361622d6b636174, r8, r9, stack[-84], stack[-76], stack[-68], stack[-60]);
+    return rax;
+}
+
+32616f64726f6d656d206465

@@ -1,0 +1,50 @@
+int sub_1400010c0(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    r9 = arg3;
+    r8 = arg2;
+    rsp = rsp - 0x58;
+    *(int16_t *)(arg1 + 0x24) = 0x3261;
+    *(int16_t *)(r8 + 0x24) = 0x6f64;
+    *(arg8 + 0x38) = 0x726f6d656d206465;
+    *(int8_t *)(arg0 + 0x27) = 0x7d;
+    *(int16_t *)(arg1 + 0x20) = 0x3637;
+    *(int16_t *)(r8 + 0x20) = 0x7327;
+    *(int8_t *)(arg0 + 0x20) = 0x63;
+    *(int8_t *)(arg0 + 0x22) = 0x63;
+    *(int16_t *)(r8 + 0x2a) = 0x6361;
+    *(int32_t *)(r9 + 0x28) = 0x20657261;
+    *(int32_t *)(r9 + 0x20) = 0x61632079;
+    *(int16_t *)(r8 + 0x2e) = 0x203a;
+    *(int32_t *)(r9 + 0x34) = 0x6c616320;
+    *(int8_t *)(arg0 + 0x21) = 0x63;
+    *(int16_t *)(arg1 + 0x22) = 0x6261;
+    *(int16_t *)(r8 + 0x30) = 0x4341;
+    *(int16_t *)(arg1 + 0x28) = 0x6335;
+    *(int16_t *)(arg1 + 0x2a) = 0x6539;
+    *(int16_t *)(arg1 + 0x26) = 0x6531;
+    *(int32_t *)(r9 + 0x24) = 0x20736576;
+    *(int32_t *)(r9 + 0x3c) = 0x20656874;
+    *(int16_t *)(arg1 + 0x2e) = 0x6339;
+    *(int32_t *)(r9 + 0x30) = 0x796c6c61;
+    *(int16_t *)(r8 + 0x28) = 0x7073;
+    *(arg8 + 0x28) = 0x7320657365685430;
+    *(int16_t *)(arg1 + 0x2c) = 0x3033;
+    *(int32_t *)(r9 + 0x2c) = 0x75746361;
+    *(int8_t *)(arg0 + 0x23) = 0x61;
+    *(int16_t *)(r8 + 0x32) = 0x7b49;
+    *(int8_t *)(arg0 + 0x25) = 0x63;
+    *(arg8 + 0x20) = 0x3030303030303030;
+    *(int16_t *)(r8 + 0x34) = 0x6166;
+    *(int16_t *)(r8 + 0x26) = 0x2077;
+    *(int8_t *)(arg0 + 0x26) = 0x34;
+    *(int16_t *)(r8 + 0x2c) = 0x2765;
+    *(int8_t *)(arg0 + 0x24) = 0x35;
+    *(int16_t *)(r8 + 0x22) = 0x6168;
+    *(int32_t *)(r9 + 0x38) = 0x2064656c;
+    *(int16_t *)(r8 + 0x36) = 0x3062;
+    *(arg8 + 0x30) = 0x7361622d6b636174;
+    if (*(int32_t *)dword_140004620 != 0x0) {
+            rsp = rsp + 0x4;
+    }
+    rax = sub_140001060("Don't ", 0x7361622d6b636174, r8, r9, stack[-84], stack[-76], stack[-68], stack[-60]);
+    return rax;
+}
