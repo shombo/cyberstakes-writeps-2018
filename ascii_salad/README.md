@@ -1,79 +1,52 @@
-# Byte Sized CBC - Points: 50
+# Ascii Salad - Points: 50
 
 ### Description:
 
-Break the CBC 'encryption' scheme running at challenge.acictf.com:1751. The author is so confident that they will just hand you the key upon connection.
+Cobra Commander is sending a flag to one of his goons. Break their simple code to find the flag here challenge.acictf.com:61703.
+Example connection command: nc challenge.acictf.com 61703
 
 ### Hints
 
- - Cipher Block Chaining ties the output of each block's 'encryption' to the next block.
- - How many different IVs could there be if a block is only one byte long?
- - What if the 'block cipher' [link](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#/media/File:CBC_encryption.svg) doesn't do anything?
+ - Cobra Commander thinks a lot of himself... its reasonable he would use a classic cipher named after an emperor.
+ - Clearly these guys are using more characters than just the alphabet -- is there a chart with lots of possible characters on it?
+ - The order of the characters on the chart matters, just like the order of the letters in the alphabet for the classic cipher. Can you identify good start and end points on the chart to rotate around?
+ - Even with more characters than the alphabet, there are not THAT many options. Could you brute force their weak scheme?
 
 ### Solution
 
-There are lots of good diagrams of CBC mode out there. Generally, this is a mode of a particular encryption scheme. Generally, this type of encryption must be a multiple of a specified `block size` (if the message isn't, it will be padded with junk data so that it is). Then, for each `block`, the result of the previous encryption block will be XORed with the plain text block prior to that XORed chunk being put through some encrpytion scheme (this step usually takes in some key). Once that step is complete, you now have an encrypted block and serves as part of the encrypted outpput and an input to the next next round. On the very first round, there obviously has not been a previous round so, therefore, you don't have that special value to XOR your plain text with prior to the encryption step. Instead of using the output from the previous step, you just give it a special number instead knows as the `initialization vector`.
+I felt like this challenge was a little guessy and kind of stupid. The hard part of the challenge is guessing the right thing that they want you to do and not actually working towards anything. Anyway... Let's interactive with the service:
 
-If this sounds complicated, just google a picture. 
+    shombo$ nc challenge.acictf.com 61703
+    Message: +-3e{"O}M""yL| " }} {PyyzK{P|P|g
 
-But since you need an `initialization vector` to kick eveything off, and every next round is a product of the previous round, the `initialization vector`, or `iv`, is pretty crucial in being able to recover an encrypted message.
-
-Luckily, in this particular challenge, we are only dealing with a block size of a single byte. Also, since no encryption scheme was specified, and I'm too lazy to try to guess one. so I am going to assume that they jsut didn't use one.
-
-What does this mean?
-
-This means that the first letter of the flag was XORed with some IV. Then, the resulting character was emitted, but also used as the key for the next round.
-
-Assuming this is true, it should be somewhat trivial to recover what the `key` for each round was since XOR is an invertable operation. (A ^ B = C, A ^ C == B)
-
-Finally firing up the challenge:
-
-    shombo$ nc challenge.acictf.com 1751
-    Welcome to the Byte Sized CBC Challenge!
-    Your Encrypted Flag (in Base64): rO+m3b6I7N3t3O6L6tO1hbDTsNHp3+yIvd7ujezfvsPJ
-
-An important note here is that the data is given in base64. That simply means that the raw bytes you ought to be dealing with have been encoded into a format that transmitter easier.
-
+Alright.. intuition tells me that this is some kind of caesar cipher type deal. Let's write a quick script to check it out...
 
     shombo$ python
     Python 2.7.15 (default, Jun 17 2018, 12:46:58) 
     [GCC 4.2.1 Compatible Apple LLVM 9.1.0 (clang-902.0.39.2)] on darwin
     Type "help", "copyright", "credits" or "license" for more information.
-    >>> import base64
-    >>> base64.b64decode('rO+m3b6I7N3t3O6L6tO1hbDTsNHp3+yIvd7ujezfvsPJ')
-    '\xac\xef\xa6\xdd\xbe\x88\xec\xdd\xed\xdc\xee\x8b\xea\xd3\xb5\x85\xb0\xd3\xb0\xd1\xe9\xdf\xec\x88\xbd\xde\xee\x8d\xec\xdf\xbe\xc3\xc9'
+    >>> for i in range(0xff):
+    ...   print i, ''.join([chr(ord(x) + i) for x in '+-3e{"O}M""yL| " }} {PyyzK{P|P|g'])
+    <snip>
+    21 @BHz?7d?b77?a?575??5?e???`?e?e?|
+    22 ACI{?8e?c88?b?686??6?f???a?f?f?}
+    23 BDJ|?9f?d99?c?797??7?g???b?g?g?~
+    <snip>
 
+Ok, this looks promising. But why isn't it complete?
 
-At this point, it is really important to understand that we need to _reverse_ this encrypted message -- we won't be able to generate it in the forward direction easily. I suppose we could brute force every byte, but that sounds hard. Let's do it the easy way... *backwards*!
+It must be because some of the values at > 127 and therefor out of ascii range. Hmm.
 
-Why do it backwards?
+I know what you're thinking.. lets just mod everything by 128. That's a reasonable idea, except that there are a lot of nonprintable characters in the beginning of the ascii range. Looking at the ascii table, let's mod everything by 128, but if the value ends up being < 32, we will simply add 32 to keep everything in printable range.
 
-Well, we know what the result of a given round is... its whatever the byte at the position is. We also know what it was XORed with -- it was whatever the preceding byte is. If we XOR those two things together, we should the third piece of the equation remainging -- the plaintext.We only don't know what the very first byte was XORed with, but we also don't care since we're 98% sure it was an `A`.
+    out = ''
+    for ch in '+-3e{"O}M""yL| " }} {PyyzK{P|P|g':
+        val = (ord(ch) + 22) % 128
+        if val < 32:
+            val += 32
+        out += chr(val)
 
-Let's put this theory to the test.
+    print out
 
-The last encrypted character is `\xc9` and the previous character is `\xc3`.
-
-    >>> chr(0xc3 ^ 0xc9)
-    '\n'
-
-Hmm.. ok..
-
-Let's keep going.. the next encrypted character back is `\xbe`. So, let's XOR that with the current encrypted char (`\xc3`):
-
-    >>> chr(0xbe ^ 0xc3)
-    '}'
-
-Oh boy.. that looks like the end of the flag!
-
-Let's script it up and see what we get...
-
-    >>> flag = base64.b64decode('rO+m3b6I7N3t3O6L6tO1hbDTsNHp3+yIvd7ujezfvsPJ')
-    >>> print ''.join([chr(ord(flag[x]) ^ ord(flag[x-1])) for x in range(len(flag)-1,0,-1)])[::-1]
-    CI{c6d1012ea9f05cca863d5c0ca3a}
-
-We skipped the first letter since we didn't know what to XOR it with, but it pretty clearly looks like its supposed to be an `A`.
-
-
-### Flag: `ACI{c6d1012ea9f05cca863d5c0ca3a}`
+### Flag: `ACI{18e3c88/b26863361f//0a1f2f2}`
 
