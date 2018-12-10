@@ -1,0 +1,21 @@
+<%- include('base_top'); -%>
+  <div class='appbody' >
+    <h2>Order Summary</h2>
+    <table>
+      <tr>
+        <th>Device ID</th>
+        <th>Customer</th>
+        <th>Status</th>
+        <th>CPU</th>
+      </tr>
+      <% db.forEach(function(item){ %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.customer %></td>
+        <td><%= item.status %></td>
+        <td><%= item.cpu %></td>
+      </tr>
+      <% }) %>
+    </table>
+  </div>
+<%- include('base_bottom'); -%>

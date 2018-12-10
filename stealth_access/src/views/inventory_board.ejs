@@ -1,0 +1,17 @@
+<%- include('base_top'); -%>
+  <div class='appbody'>
+    <h2>Inventory: Boards</h2>
+    <table>
+      <tr>
+        <th>Board ID</th>
+        <th>Device ID</th>
+      </tr>
+      <% db.forEach(function(item){ %>
+      <tr>
+        <td><%= item.board %></td>
+        <td><%= item.id %></td>
+      </tr>
+      <% }) %>
+    </table>
+  </div>
+<%- include('base_bottom'); -%> 

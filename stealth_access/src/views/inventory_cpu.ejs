@@ -1,0 +1,17 @@
+<%- include('base_top'); -%>
+  <div class='appbody'>
+    <h2>Inventory: CPUs</h2>
+    <table>
+      <tr>
+        <th>Device ID</th>
+        <th>CPU ID</th>
+      </tr>
+      <% db.forEach(function(item){ %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.cpu %></td>
+      </tr>
+      <% }) %>
+    </table>
+  </div>
+<%- include('base_bottom'); -%>

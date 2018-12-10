@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/css/index.css' />
+  </head>
+  <body>
+    <div>
+      <h1>Access Logs</h1>
+      <ul>
+        <% logs.forEach(function(log){ %>
+        <li><%= log.userAgent %></li>
+        <% }) %>
+      </ul>
+    </div>
+  </body>
+</html>

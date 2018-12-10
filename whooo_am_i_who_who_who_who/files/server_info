@@ -1,0 +1,3 @@
+server   : challenge.acictf.com
+server port     : 61768
+ssh port	: 28933
