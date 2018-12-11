@@ -22,7 +22,6 @@ Time to use extundelete as hinted by the challenge. I already knew the directory
 You could also just do everything if you did not know the directory you wanted
 `extundelete Shall_I_carve.img --restore-all`
 
-
 These commands will recover the deleted images directory. This directory contains 10 .gz compressed files from 0-9.
 ![4](img/4.png)
 Lets uncompress.
@@ -54,6 +53,7 @@ Then .gzip. Notice, then using `file` this time it says:
 
 So we know the output was previous a .tar file. To make life easy, lets rename these files:
 `for i in {0..9}; do do mv $i.out $i.tar.gz; done`
+
 `for i in {0..9}; do gunzip -d $i.tar.gz; done`
 
 Using file, we see these .tar files are actually data. Lets look for the flag

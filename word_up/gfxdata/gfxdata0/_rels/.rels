@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId2" Type="http://schemas.microsoft.com/office/2006/relationships/downRev" Target="drs/downrev.xml"/><Relationship Id="rId1" Type="http://schemas.microsoft.com/office/2006/relationships/graphicFrameDoc" Target="drs/e2oDoc.xml"/></Relationships>
