@@ -1,9 +1,8 @@
 ## I'm So Meta Even This Acronym - Points: 350
 
 ### Prompt:
-```
-All of the files in this volume look innocuous. Maybe there's something deeper. Disk image: disk.img.gz. [disk.img.gz](./files/disk.img.gz)
-```
+
+All of the files in this volume look innocuous. Maybe there's something deeper. Disk image: [disk.img.gz](./files/disk.img.gz)
 ### Hints:
 
  * It's always best to put things in order. 
@@ -168,7 +167,7 @@ For those curious, we are seeing userids in that field and permissions (chmod) s
 
 As we can see, this starts to spell out something. So far we have `It's dan`
 
-After I got tired of manually doing this I scripted something quick to parse it for me. The final version of that script is included in the files as `calculate.py`
+After I got tired of manually doing this I scripted something quick to parse it for me. The final version of that script is included in the files as `solve.py`
 
 The full output in this entry is: `It's dangerous to go alone! Take this. AES_ECB SAKMWLIJKEOMEDOR`
 
