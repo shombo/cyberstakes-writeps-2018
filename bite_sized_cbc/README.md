@@ -48,7 +48,7 @@ At this point, it is really important to understand that we need to _reverse_ th
 
 Why do it backwards?
 
-Well, we know what the result of a given round is... its whatever the byte at the position is. We also know what it was XORed with -- it was whatever the preceding byte is. If we XOR those two things together, we should the third piece of the equation remainging -- the plaintext.We only don't know what the very first byte was XORed with, but we also don't care since we're 98% sure it was an `A`.
+Well, we know what the result of a given round is... its whatever the byte at the position is. We also know what it was XORed with -- it was whatever the preceding byte is. If we XOR those two things together, we should have the third piece of the equation remainging -- the plaintext. We only don't know what the very first byte was XORed with, but we also don't care since we're 98% sure it was an `A`.
 
 Let's put this theory to the test.
 
