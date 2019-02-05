@@ -1,14 +1,18 @@
-# Stealth Access - Points: ???
+# Stealth Access - Points: 125
 
 ### Description:
 
-<missing since site is down>
+The team found a web application. Find the flag without creating any logs on the server! The team was able to retrieve the source code at webapp-source.tgz. We also obtained additional information from the last mission at device_id. WARNING: This challenge's flag does not follow the standard `ACI{...}` format. The flag format is 32 hexadecimal characters, `/[0-9a-f]{32}/`.
 
 ### Hints
 
-<missing since site is down>
+ - Don't be foolish and browse the website carelessly
+ - You might need to reset the docker container if you mess up!
+ - Study the source to learn the path.
 
 ### Solution
+
+Note: This is an on-demand challenge that spins up a personalized web service for the player.
 
 Based on the description and the hints, the goal of this challenge is to gain some information about device `36D1C3D365409932BF0B42335E661C2C` without making it in the application's log. Haphazardly browsing the page, you notice this ID appearing on just about every page with some key piece of information missing. Looking at the well-documented source, you notice a `logaccess` function with a switch that is responsible for updating the log with your user-agent so your goal is to avoid any link that calls this function. Those links can be found inside the switch:
 ```  switch (req.url) {
